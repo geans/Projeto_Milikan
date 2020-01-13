@@ -3,7 +3,7 @@
 # Instituto de Física - Universidade Federal de Alagoas
 # Data: 24 de agosto de 2016
 #
-# Requirer biblioteca externa
+# Requer biblioteca externa
 # Instalação:
 #   pip install pyserial
 #   pip install opencv-python
