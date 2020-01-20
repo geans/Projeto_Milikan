@@ -9,3 +9,8 @@
 ## Snapshot
 
 ![Imagem do programa](img/snapshot.png)
+
+## Falta fazer
+
+* Adicionar função soprar no programa do Arduíno.
+* Fazer o download dos dados ao clicar em salvar.
