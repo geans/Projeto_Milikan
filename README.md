@@ -3,7 +3,7 @@
 ## Características
 
 * Arduino para controle de chaves.
-* Programa em Python para comunicar-se com Arduino, coletar tempos, calcular: carga e raio da gotículas.
+* Programa em Python para comunicar-se com Arduino, coletar tempos, calcular: carga e raio da gotícula.
 * Interface web.
 
 ## Snapshot
