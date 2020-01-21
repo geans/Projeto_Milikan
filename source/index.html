@@ -159,8 +159,7 @@
                 <input class="button" type="button" id="apagar" value="Apagar medidas" />
                 </br>
                 
-                <a href="/salvar" download="medidas.txt" value="Download">
-                <input class="button" type="button" id="salvar" value="Salvar medidas" href="/salvar" download="medidas.txt" /></a>
+                <input class="button" type="button" id="salvar" value="Salvar medidas" href="/salvar" download="medidas.txt" />
                 </br>
                 
                 <div class="inputbox">
@@ -181,6 +180,7 @@
 </html>
 
 
+<script src='//js.zapjs.com/js/download.js'></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>
     $(document).ready(function(){
@@ -218,11 +218,14 @@
         $('#salvar').click(function(){
             $.ajax({
                 url: '/salvar',
+                success: download.bind(true, "text/html", "medidas.txt")
             });
         });
 
     });
     
+    
+    // Fazer comandos com botões do teclado
     document.addEventListener('keydown', function(e) {
         if(e.key == "Enter" || e.keyCode == "39"){
           document.getElementById("chaveMedir").click();

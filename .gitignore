@@ -1,5 +1,7 @@
 # Arquivo criado pelo programa
 .port
 medidas_milikan__*
-
 *.txt
+
+# Pasta gerada pelo Python
+__pycache__
