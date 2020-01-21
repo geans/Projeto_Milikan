@@ -64,9 +64,9 @@ def apagar():
 
 @app.route('/salvar')
 def salvar():
-    filename = _salvar()
+    content = _salvar()
     mdebug('Salvar acionado.')
-    return Response('OK.')
+    return Response(content)
 
 def generate():
     global vs

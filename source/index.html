@@ -159,7 +159,8 @@
                 <input class="button" type="button" id="apagar" value="Apagar medidas" />
                 </br>
                 
-                <input class="button" type="button" id="salvar" value="Salvar medidas" />
+                <a href="/salvar" download="medidas.txt" value="Download">
+                <input class="button" type="button" id="salvar" value="Salvar medidas" href="/salvar" download="medidas.txt" /></a>
                 </br>
                 
                 <div class="inputbox">
@@ -210,7 +211,6 @@
         $('#apagar').click(function(){
             if (confirm("Apagar medidas?"))
             $.ajax({
-                
                 url: '/apagar',
             });
         });

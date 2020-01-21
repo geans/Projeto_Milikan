@@ -96,20 +96,24 @@ class Milikan:
 
     def save_measures(self):
         debug('Funcao salvar medidas')
-        filename = 'medidas-milikan.txt'    
-        file = open(filename, 'w')
-        if file:
-            file.write('Tempo\nSegundos\n\n')
-            for measure in self.__buffer:
-                file.write(str(measure) + '\n')
-            file.write('\n\nCarga\tRaio\n')
-            file.write('Coulomb\tMetro\n\n')
-            for i in range(len(self.__charge)):
-                file.write('{:.6}\t{:.6}\n'.format(self.__charge[i], 
-                                                   self.__radius[i]))
-        file.close()
+        
+        # Construindo conteudo do arquivo
+        buffer = ''
+        buffer += 'Tempo\nSegundos\n\n'
+        for measure in self.__buffer:
+            buffer += str(measure) + '\n'
+        buffer += '\n\nCarga\tRaio\n'
+        buffer += 'Coulomb\tMetro\n\n'
+        for i in range(len(self.__charge)):
+            buffer += '{:.6}\t{:.6}\n'.format(self.__charge[i], 
+                                               self.__radius[i])
+                                               
+        #filename = 'medidas-milikan.txt'    
+        #file = open(filename, 'w')
+        #file.write(buffer)
+        #file.close()
         self.init_measures()
-        return filename
+        return buffer
 
     def calc(self, t1, t2, ddp, divisions):
         u = float(ddp) # ddp nas placas

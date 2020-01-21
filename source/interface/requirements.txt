@@ -1,4 +1,0 @@
-netifaces==0.10.9
-opencv_python==4.1.2.30
-Flask==1.1.1
-waitress==1.4.2
