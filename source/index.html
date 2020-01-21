@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+        <title>Experimento de Milikan</title>
+        
+        <style>
+        img {
+            float: left;
+            margin: 4px 2px;
+            border: 2px solid #008CBA;
+        }
+
+        .button {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+
+            width: 350px;
+            border: 2px solid #008CBA;
+            font-size: 24px;
+        }
+        
+        .inputbox {
+            //width: 282px;
+            width: 350px;
+            //border: 2px solid #008CBA;
+            font-size: 24px;
+            
+            //border: 2px solid #ddd;
+            display: inline-flex;
+            margin: 4px 2px;
+            //border: 2px solid transparent;
+        }
+        
+        .inputbox,
+        .inputbox * {
+            box-sizing: border-box;
+        }
+        
+        .inputnumber{
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            //margin: 4px 2px;
+
+            width: 100%;
+            border: 2px solid #008CBA;
+            font-size: 24px;
+        }
+        
+        .inputnumber::-webkit-inner-spin-button,
+        .inputnumber::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+        }
+        
+        .inputbutton {
+            outline:none;
+            -webkit-appearance: none;
+            background-color: #008CBA;
+            border: none;
+            align-items: center;
+            justify-content: center;
+            width: 9rem;
+            height: 4rem;
+            cursor: pointer;
+            margin: 0;
+            position: relative;
+            margin: 0px 1px;
+            border: 2px solid #008CBA;
+            padding: 15px 32px;
+        }
+
+        .inputbutton:before,
+        .inputbutton:after {
+            display: inline-block;
+            position: absolute;
+            content: '';
+            width: 1rem;
+            height: 2px;
+            background-color: white;
+            transform: translate(-50%, -50%);
+        }
+        
+        
+        .plus:after {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+        
+        .button:hover {
+            opacity: 0.5;
+        }
+        
+        .inputbutton:hover {
+            opacity: 0.5;
+        }
+        
+        .inputnumber:hover {
+            opacity: 0.5;
+        }
+        
+        .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* For small screen: */
+        @media only screen and (max-width: 1020px) {
+            .button {
+                width: 640px;
+            }
+            .inputbox {
+                width: 640px;
+            }
+        }
+        
+        /* For mobile phones: */
+        @media only screen and (max-width: 670px) {
+            img {
+                width: 100%;
+            }
+            .button {
+                width: 100%;
+            }
+            .inputbox {
+                width: 100%;
+            }
+        }
+        </style>
+	</head>
+	
+	<body>
+        <div class="row">
+            <div class="col-1">
+                <img src="/video_feed">  
+            </div>
+		
+            <div class="col-2">
+                <input class="button" type="button" id="chave" value="Mudar polaridade" />
+                </br>
+                
+                <input class="button" type="button" id="chaveMedir" value="Mudar polaridade e medir" />
+                </br>
+                
+                <input class="button" type="button" id="gotas" value="Soprar gotas" />
+                </br>
+                
+                <input class="button" type="button" id="apagar" value="Apagar medidas" />
+                </br>
+                
+                <a href="/salvar" download="medidas.txt" value="Download">
+                <input class="button" type="button" id="salvar" value="Salvar medidas" href="/salvar" download="medidas.txt" /></a>
+                </br>
+                
+                <div class="inputbox">
+                    <button class="inputbutton" onclick="this.parentNode.querySelector('#ddp').stepDown()" ></button>
+                    <input class="inputnumber" type="number" min="1" max="600" value=300 id="ddp">
+                    <button class="inputbutton plus" onclick="this.parentNode.querySelector('#ddp').stepUp()"></button>
+                </div>
+                </br>
+                
+                <div class="inputbox">                
+                    <button class="inputbutton" onclick="this.parentNode.querySelector('#div').stepDown()" ></button>
+                    <input class="inputnumber" type="number" min="1" max="30" value=10 id="div">
+                    <button class="inputbutton plus" onclick="this.parentNode.querySelector('#div').stepUp()"></button>
+                </div>
+            </div>
+        </div>
+	</body>
+</html>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+
+        $('#chave').click(function(){
+            $.ajax({
+                //type: 'POST',
+                url: '/chave',
+                //success: function(data) {
+                //	alert(data);
+                //}
+            });
+        });
+
+        $('#chaveMedir').click(function(){
+            $.ajax({
+                url: '/chaveMedir',
+                data: {'ddp': $("#ddp").val(), 'divisions': $("#div").val()},
+            });
+        });
+
+        $('#gotas').click(function(){
+            $.ajax({
+                url: '/gotas',
+            });
+        });
+
+        $('#apagar').click(function(){
+            if (confirm("Apagar medidas?"))
+            $.ajax({
+                url: '/apagar',
+            });
+        });
+
+        $('#salvar').click(function(){
+            $.ajax({
+                url: '/salvar',
+            });
+        });
+
+    });
+    
+    document.addEventListener('keydown', function(e) {
+        if(e.key == "Enter" || e.keyCode == "39"){
+          document.getElementById("chaveMedir").click();
+        }
+        if(e.keyCode == "32" || e.keyCode == "37"){
+          document.getElementById("chave").click();
+        }
+    });
+</script>

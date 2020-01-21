@@ -1,4 +1,0 @@
-wxPython==4.0.6
-opencv_python==4.1.0.25
-imutils==0.5.2
-pyserial==3.4
