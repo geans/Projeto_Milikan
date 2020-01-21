@@ -15,6 +15,11 @@ def debug(value=''):
         print(value)
 
 
+class cmd:
+    change_key = '1'
+    blow_drops = '2'
+
+
 class Milikan:
     def __init__(self):
         self.c1 = 2.73 * 10**-11 # constante 1, unidade: kg.m(m.s)^-1/2
@@ -51,14 +56,14 @@ class Milikan:
 
     def change_key(self):
         debug('Funcao chave')
-        self.__controller.send_command()
+        self.__controller.send_command(cmd.change_key)
 
     def change_and_measure_key(self, ddp, divisions):
         debug('Funcao chave e medir: {}, {}'.format(ddp, divisions))
         diff_time, charge, radius = 0, '-', '-'
         if self.__reference_time == -1:
             try:
-                self.__controller.send_command()
+                self.__controller.send_command(cmd.change_key)
             except Exception:
                 debug('Atenção! Arduino desconectado')
             self.__reference_time = time()
@@ -83,7 +88,7 @@ class Milikan:
         
     def blow_drops(self):
         debug('Funcao gotas')
-        pass  #TODO
+        self.__controller.send_command(cmd.blow_drops)
 
     def init_measures(self):
         debug('Funcao apagar medidas')

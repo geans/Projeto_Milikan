@@ -2,7 +2,7 @@
 
 ## Características
 
-* Arduino para controle de chaves.
+* Arduino para controlar chave e soprar bolhas.
 * Programa em Python para comunicar-se com Arduino, coletar tempos, e calcula: carga e raio da gotícula.
 * Encontra a porta que o Arduino está conectado.
 * Faz o download dos dados ao clicar em salvar.
@@ -11,7 +11,3 @@
 ## Snapshot
 
 ![Imagem do programa](img/snapshot.png)
-
-## Falta fazer
-
-* Adicionar função soprar no programa do Arduino.
