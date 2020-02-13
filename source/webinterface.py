@@ -1,5 +1,5 @@
 from flask import Flask, Response, request
-from werkzeug.serving import run_simple
+from waitress import serve
 import netifaces as ni
 import cv2
 import os
@@ -97,4 +97,4 @@ def getServerIPs():
 
 def runserver():
     mdebug('Interface online')
-    run_simple(IP, PORT, app)
+    serve(app, host=IP, port=PORT)
