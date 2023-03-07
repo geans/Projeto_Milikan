@@ -52,9 +52,10 @@ void check_new_client() {
     html = "Times\n";   // Long name
     html += "ms\n";      // Unit
     html += "\n";        // Comments
-    for(int i = 0; i < size_list && time_list[i] != 0; ++i) {
+    for(int i = 0; i < size_list; ++i) {
       html += time_list[i];
       html += '\n';
+      mdebug(i);
     }
     client.println(html);
     mdebug("Print to client.");
