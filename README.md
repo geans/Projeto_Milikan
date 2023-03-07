@@ -9,6 +9,6 @@
 
 ## Prototype image
 
-![buttons](fig/buttons.png)
-![pins](fig/pins.png)
-![inside](fig/inside.png)
+![buttons](fig/buttons.jpg)
+![pins](fig/pins.jpg)
+![inside](fig/inside.jpg)
