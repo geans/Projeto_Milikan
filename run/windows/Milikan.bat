@@ -1,1 +1,0 @@
-python.exe ..\..\source\__init__.py

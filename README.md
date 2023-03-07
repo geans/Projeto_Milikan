@@ -1,13 +1,14 @@
-# Projeto_Milikan
+# Milikan Project
 
-## Características
+## Characteristics
 
-* Arduino para controlar chave e soprar as gotículas.
-* Programa em Python para comunicar-se com Arduino, coletar tempos, e calcula: carga e raio da gotícula.
-* Encontra a porta que o Arduino está conectado.
-* Faz o download dos dados ao clicar em salvar.
-* Interface web.
+* NodeMCU-v3.
+* Record times on push button.
+* Hard button to change polarization and erase data.
+* Web interface.
 
-## Snapshot
+## Prototype image
 
-![Imagem do programa](img/snapshot.png)
+![buttons](fig/buttons.png)
+![pins](fig/pins.png)
+![inside](fig/inside.png)
